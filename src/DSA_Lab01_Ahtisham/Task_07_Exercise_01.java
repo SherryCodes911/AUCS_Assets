@@ -1,4 +1,4 @@
-package Lab01_Ahtisham;
+package DSA_Lab01_Ahtisham;
 //Lab Task 07: Anagram Check
 
 /**

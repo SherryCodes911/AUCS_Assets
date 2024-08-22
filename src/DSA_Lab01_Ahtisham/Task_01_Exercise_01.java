@@ -1,4 +1,4 @@
-package Lab01_Ahtisham;
+package DSA_Lab01_Ahtisham;
 //Lab Task 01: Array Basics and Traversal
 
 //Objective: Learn how to declare, initialize, and traverse an array.

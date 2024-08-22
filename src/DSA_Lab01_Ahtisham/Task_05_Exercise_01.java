@@ -1,4 +1,4 @@
-package Lab01_Ahtisham;
+package DSA_Lab01_Ahtisham;
 //Lab Task 05: Reverse Array
 
 import java.util.Scanner;

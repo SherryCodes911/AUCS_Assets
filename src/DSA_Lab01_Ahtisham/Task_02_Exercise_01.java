@@ -1,4 +1,4 @@
-package Lab01_Ahtisham;
+package DSA_Lab01_Ahtisham;
 //Lab Task 2: Insertion in Arrays
 //Objective: Practice inserting elements at different positions in an array.
 

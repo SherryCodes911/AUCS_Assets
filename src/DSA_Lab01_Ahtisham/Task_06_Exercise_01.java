@@ -1,4 +1,4 @@
-package Lab01_Ahtisham;
+package DSA_Lab01_Ahtisham;
 //Lab Task 06: Palindrome
 //A palindrome is a sequence of characters that reads the same forward and backward. In the context of strings, a palindrome is a word, phrase, or sequence that remains unchanged when its characters are reversed. For example, "madam" and "racecar" are palindromes, while "hello" is not.
 

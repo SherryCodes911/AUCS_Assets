@@ -1,4 +1,4 @@
-package Lab01_Ahtisham;
+package DSA_Lab01_Ahtisham;
 //Lab Task 3: Deletion in Arrays
 //Objective: Learn how to delete elements from an array.
 

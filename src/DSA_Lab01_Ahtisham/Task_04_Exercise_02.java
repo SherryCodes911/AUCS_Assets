@@ -1,4 +1,4 @@
-package Lab01_Ahtisham;
+package DSA_Lab01_Ahtisham;
 //Lab Task 4: Searching in Arrays
 //Objective: Practice different search techniques in arrays.
 
