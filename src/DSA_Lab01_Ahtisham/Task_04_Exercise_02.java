@@ -15,7 +15,7 @@ public class Task_04_Exercise_02 {
     public static void main(String[] args) {
         int[] arr = {4, 6, 2, 8, 10};
 
-        System.out.println("Enter the value you wan to search:");
+        System.out.println("Enter the value you want to search:");
         Scanner sc = new Scanner(System.in);
         int element = sc.nextInt();
         for (int i = 0; i < arr.length; i++) {

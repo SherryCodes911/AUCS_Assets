@@ -26,7 +26,7 @@ public class Task_02_Exercise_01 {
         }
 
         int indexWhereInsertNewElement = 0;
-        for (int i = arr.length - 1; i >= indexWhereInsertNewElement; i--) {
+        for (int i = arr.length - 1; i > indexWhereInsertNewElement; i--) {
             arr[i] = arr[i - 1];    // Shifting to create space where to insert.
         }
 

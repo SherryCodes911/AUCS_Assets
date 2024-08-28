@@ -53,11 +53,11 @@ public class Task_07_Exercise_01 {
 
         for (int i = 0; i < c2.length; i++) {
             if (c1[i] != c2[i]) {
-                System.out.println("Not an Anagram");
+                System.out.println(s1 + " and " + s2 + " are not an Anagrams");
                 return;
             }
         }
-        System.out.println("Anagram");
+        System.out.println(s1 + " and " + s2 + " are Anagrams");
 
     }
 }
