@@ -1,2 +1,4 @@
-package DSA_Lab02_Ahtisham;public class Problem_04 {
+package DSA_Lab02_Ahtisham;
+
+public class Problem_04 {
 }
