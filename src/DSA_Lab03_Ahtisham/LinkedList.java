@@ -1,21 +1,29 @@
-package DSA_Lab_03;
+package DSA_Lab03_Ahtisham;
+
+class Node {
+    int data;
+    Node next;
+
+    Node() {
+        this.next = null;
+    }
+}
 
 public class LinkedList {
-    public class Node {
-        int data;
-        Node next;
-
-        Node() {
-            this.next = null;
-        }
-    }
 
     private Node head;
+    private int count;
+
+    public int getCount() {
+        System.out.print("Nodes in LinkedList: ");
+        return count;
+    }
 
     LinkedList() {
         this.head = null;
     }
 
+    
     void traverse() {
         Node currNode = this.head;
         int i = 0;
@@ -32,11 +40,30 @@ public class LinkedList {
         System.out.println();
     }
 
+    void search(int data) {
+        if (this.head == null) {
+            System.out.println("List is empty can't search " + data);
+            return;
+        }
+        Node currNode = this.head;
+        int index = 0;
+        while (currNode != null) {
+            if (currNode.data == data) {
+                System.out.println("Element " + currNode.data + " found at position " + (index + 1));
+                return;
+            }
+            currNode = currNode.next;
+            index++;
+        }
+        System.out.println("Element " + data + " not found");
+    }
+
     void insertAtBeginning(int data) {
         Node newNode = new Node();
         newNode.data = data;
         newNode.next = head;
         head = newNode;
+        this.count++;
         System.out.println(data + " inserted at head successfully");
 
     }
@@ -62,6 +89,7 @@ public class LinkedList {
         newNode.data = data;
         newNode.next = curNode.next;
         curNode.next = newNode;
+        this.count++;
         System.out.println(data + " inserted at " + index + " index");
 
     }
@@ -85,6 +113,7 @@ public class LinkedList {
         }
         cuNode.next = newNode;
         newNode.next = null;
+        this.count++;
         System.out.println(data + " inserted at tail successfully");
 
     }
@@ -96,13 +125,14 @@ public class LinkedList {
         }
         Node tempNode = this.head;
         this.head = head.next;
+        this.count--;
         System.out.println(
-                "Head Node deleted successfully from Singly Linkedlist. Value of deleted node is: " + tempNode.data);
-        tempNode = null;
+                "Head Node deleted successfully from Singly Linked list. Value of deleted node is: " + tempNode.data);
+//        tempNode = null; no need Java Garbage take care of it
     }
 
 
-    void deleteAtIndex(int index){
+    void deleteAtIndex(int index) {
         if (this.head == null) {
             System.out.println("List is empty can't delete at index " + index);
             return;
@@ -113,16 +143,20 @@ public class LinkedList {
             return;
         }
 
-        int i = 0;
+
         Node cuNode = this.head;
         Node temNode = this.head;
+        int i = 0;
+
         while (i != index - 1) {
             cuNode = temNode;
             temNode = temNode.next;
+            i++;
         }
         cuNode.next = temNode.next;
-        System.out.println(temNode + " deleted at index " + index);
-        temNode = null;
+        this.count--;
+        System.out.println(temNode.data + " deleted at index " + index);
+//        temNode = null;
     }
 
     void deleteAtEnd() {
@@ -138,6 +172,7 @@ public class LinkedList {
             cuNode = tempNode;
             tempNode = tempNode.next;
         }
+        this.count--;
         System.out.println(tempNode.data + " deleted at tail successfully");
         cuNode.next = null;
 
@@ -146,6 +181,7 @@ public class LinkedList {
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
 
+        System.out.println(list.getCount());
         for (int i = 10; i >= 1; i--) {
             list.insertAtBeginning(i);
         }
@@ -159,9 +195,13 @@ public class LinkedList {
         list.traverse();
         list.insertAtIndex(200, 4);
         list.traverse();
+
         list.deleteAtIndex(4);
         list.traverse();
 
+        System.out.println(list.getCount());
+
+        list.search(2);
     }
 
 }
