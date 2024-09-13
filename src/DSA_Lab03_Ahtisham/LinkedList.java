@@ -178,10 +178,30 @@ public class LinkedList {
 
     }
 
+    void reverse() {
+        if (this.head == null) {
+            System.out.println("List is empty, nothing to reverse.");
+            return;
+        }
+
+        Node prev = null;
+        Node current = this.head;
+        Node next = null;
+
+        while (current != null) {
+            next = current.next;  // Save the next node
+            current.next = prev;  // Reverse the current node's pointer
+            prev = current;       // Move prev to current
+            current = next;       // Move current to next
+        }
+
+        this.head = prev;  // Update the head to the new front (last node)
+        System.out.println("LinkedList reversed successfully.");
+    }
+
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
 
-        System.out.println(list.getCount());
         for (int i = 10; i >= 1; i--) {
             list.insertAtBeginning(i);
         }
@@ -202,6 +222,9 @@ public class LinkedList {
         System.out.println(list.getCount());
 
         list.search(2);
+
+        list.reverse();
+        list.traverse();
     }
 
 }
