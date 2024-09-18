@@ -1,4 +1,4 @@
-package DSA_Lab03_Ahtisham;
+package DSA_Lab_04_Ahtisham;
 
 /**
  * You will implement a doubly linked list in Java (or any other programming language of your
@@ -47,6 +47,12 @@ class DoublyNode {
     DoublyNode next;
     DoublyNode prev;
 
+    DoublyNode(int data) {
+        this.data = data;
+        this.next = null;
+        this.prev = null;
+    }
+
 }
 
 public class DoublyLinkedList {
@@ -71,11 +77,27 @@ public class DoublyLinkedList {
             return;
         }
         int i = 0;
-        System.out.println("\nPrinting list\n");
+        System.out.println("\nPrinting list Forward\n");
         while (currNode != null) {
             System.out.println("Doubly LinkedList " + (i + 1) + " Element is " + currNode.data);
             currNode = currNode.next;
             i++;
+        }
+        System.out.println();
+    }
+
+    void traverseBackward() {
+        if (this.head == null) {
+            System.out.println("Doubly LinkedList is empty can't traverse");
+            return;
+        }
+        DoublyNode currNode = this.tail;
+        System.out.println("\nPrinting list Backward\n");
+        int i = this.count;
+        while (currNode != null) {
+            System.out.println("Doubly LinkedList " + i + " Element is " + currNode.data);
+            currNode = currNode.prev;
+            i--;
         }
         System.out.println();
     }
@@ -100,13 +122,17 @@ public class DoublyLinkedList {
     }
 
     void insertAtBeginning(int data) {
-        DoublyNode newNode = new DoublyNode();
-        newNode.data = data;
-        newNode.next = head;
-        newNode.prev = null;
-        head = newNode;
+        DoublyNode newNode = new DoublyNode(data);
+        if (this.head == null) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = head;
+            head.prev = newNode;
+            head = newNode;
+        }
         this.count++;
-        System.out.println(data + " inserted at head successfully");
+        System.out.println(data + " inserted at head successfully in Doubly LinkedList");
 
     }
 
@@ -116,7 +142,7 @@ public class DoublyLinkedList {
             return;
         }
 
-        if (index < 2) {
+        if (index < 2 || index > this.count) {
             System.out.println("Invalid index can't insert at index " + index);
             return;
         }
@@ -127,36 +153,33 @@ public class DoublyLinkedList {
             curNode = curNode.next;
             i++;
         }
-        DoublyNode newNode = new DoublyNode();
-        newNode.data = data;
+        DoublyNode newNode = new DoublyNode(data);
         newNode.next = curNode.next;
+        newNode.prev = curNode;
         curNode.next = newNode;
+
+        if (newNode.next != null) {
+            newNode.next.prev = newNode;
+        }
+
         this.count++;
         System.out.println(data + " inserted at " + index + " index");
 
     }
 
     void insertAtEnd(int data) {
-        DoublyNode newNode = new DoublyNode();
-        newNode.data = data;
-
         if (this.head == null) {
-            newNode.next = head;
-            System.out.println("List is Empty can't insert at end. "
-                    + data + " inserted successfully but on head");
+            System.out.println("List is empty can't insert " + data + " at end in Doubly LinkedList");
             return;
         }
 
-        DoublyNode cuNode = this.head;
-        DoublyNode tempNode = this.head;
-        while (tempNode != null) {
-            cuNode = tempNode;
-            tempNode = tempNode.next;
-        }
-        cuNode.next = newNode;
+        DoublyNode newNode = new DoublyNode(data);
+        this.tail.next = newNode;
+        newNode.prev = this.tail;
         newNode.next = null;
+        this.tail = newNode;
         this.count++;
-        System.out.println(data + " inserted at tail successfully");
+        System.out.println(data + " inserted at tail successfully in Doubly LinkedList");
 
     }
 
@@ -197,27 +220,24 @@ public class DoublyLinkedList {
             i++;
         }
         cuNode.next = temNode.next;
+        temNode.next.prev = cuNode;
         this.count--;
         System.out.println(temNode.data + " deleted at index " + index);
-//        temNode = null;
+        temNode = null;
     }
 
     void deleteAtEnd() {
 
         if (this.head == null) {
-            System.out.println("List is Empty can't delete tail node");
+            System.out.println("List is Empty can't delete tail node of Doubly LinkedList");
             return;
         }
 
-        DoublyNode cuNode = this.head;
-        DoublyNode tempNode = this.head;
-        while (tempNode.next != null) {
-            cuNode = tempNode;
-            tempNode = tempNode.next;
-        }
+        DoublyNode tempNode = this.tail;
         this.count--;
-        System.out.println(tempNode.data + " deleted at tail successfully");
-        cuNode.next = null;
+        this.tail = tempNode.prev;
+        this.tail.next = null;
+        System.out.println(tempNode.data + " deleted at tail successfully from Doubly LinkedList");
 //        tempNode = null;  No Need Java Garbage Collector Takes care of it
 
     }
@@ -226,28 +246,30 @@ public class DoublyLinkedList {
         DoublyLinkedList list = new DoublyLinkedList();
 
         System.out.println(list.getCount());
-        for (int i = 10; i >= 1; i--) {
+        for (int i = 10; i > 0; i--) {
             list.insertAtBeginning(i);
         }
-        list.traverseForward();
-
-        list.deleteAtBeginning();
         list.traverseForward();
 
         list.insertAtEnd(100);
         list.traverseForward();
 
+        list.deleteAtBeginning();
+        list.traverseForward();
+
         list.deleteAtEnd();
         list.traverseForward();
-//        list.insertAtIndex(200, 4);
-//        list.traverseForward();
 
-//        list.deleteAtIndex(4);
-//        list.traverseForward();
 
-        System.out.println(list.getCount());
+        list.insertAtIndex(200, 5);
+        list.traverseForward();
 
-        list.search(2);
+        list.deleteAtIndex(4);
+        list.traverseForward();
+
+        list.traverseBackward();
+
+        list.search(10);
     }
 
 }
