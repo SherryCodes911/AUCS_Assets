@@ -37,21 +37,24 @@ package DSA_Lab_05_Ahtisham;
 public class Part_03_Task_04 {
 
     public int[] finalPrices(int[] prices) {
-
-        for (int i = 0; i < prices.length - 1; i++) {
-
-            if (prices[i] > prices[i + 1]) prices[i] = prices[i] - prices[i + 1];
-
-            else if (prices[i] < prices[i + 1]) prices[i] = prices[i + 1] - prices[i];
-
+        int[] answers = new int[prices.length];
+        for (int i = 0; i < prices.length; i++) {
+            answers[i] = prices[i];
+            for (int j = i + 1; j < prices.length; j++) {
+                if (prices[j] <= prices[i]) {
+                    answers[i] = prices[i] - prices[j];
+                    break;
+                }
+            }
         }
 
-
-        return prices;
+        return answers;
     }
 
     public static void main(String[] args) {
-        int[] prices = {8, 4, 6, 2, 3};
+//        int[] prices = {8, 4, 6, 2, 3};
+//        int[] prices = {1,2,3,4,5};
+        int[] prices = {10,1,1,6};
 
         prices = new Part_03_Task_04().finalPrices(prices);
         for (int price : prices) {
