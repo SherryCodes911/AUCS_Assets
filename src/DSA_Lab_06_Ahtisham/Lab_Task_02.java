@@ -25,8 +25,7 @@ public class Lab_Task_02 {
             }
 
         }
-        System.out.println("Number of operations took to solve " + arr.length +
-                " length of array using Optimized Bubble Sort are: " + numberOfOperations);
+        System.out.println("Number of operations took to solve " + arr.length + " length of array using Optimized Bubble Sort are: " + numberOfOperations);
 
 
         return arr;
