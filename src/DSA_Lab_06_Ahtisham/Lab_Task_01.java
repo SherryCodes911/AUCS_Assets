@@ -59,7 +59,7 @@ public class Lab_Task_01 {
                 numberOfOperations++;
             }
         }
-        System.out.println("Number of operations took to solve " + arr.length + " length of array is: " + numberOfOperations);
+        System.out.println("Number of operations took to solve " + arr.length + " length of array using Bubble Sort is: " + numberOfOperations);
         return arr;
     }
 
