@@ -4,4 +4,5 @@ Institute: <b>Aror University of Art, Architecture, Design and Heritage, Sukkur<
 <br>
 Student ID: <b>ARI-F23-0018</b>
 <br>
-I have created this repository to push my institute labs, assignments and other works. If you find it helpful you may use otherwise it's for academic purpose.
+<h2> I am maintaining Fall-23 Artificial Intelligence assets </h2><br>
+Reach out to me: +923448143397
